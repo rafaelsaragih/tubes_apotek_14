@@ -1,8 +1,9 @@
 package main
+
 import "fmt"
 
 type obat struct {
-	stok int
+	stok                     int
 	nama, gejala, kadaluarsa string
 }
 
@@ -33,7 +34,11 @@ func main() {
 
 		if pilih == 1 {
 			tambahObat(&data, &n)
-		} else if 
+		} else if pilih == 2 {
+			ubahObat(&data, &n)
+		} else if pilih == 3 {
+			hapusObat(&data, &n)
+		}
 	}
 }
 
@@ -88,6 +93,50 @@ func ubahObat(A *arrObat, n *int) {
 	fmt.Println("Data tidak ditemukan.")
 }
 
+func hapusObat(A *arrObat, n *int) {
+	var nama string
+	var i int
+
+	fmt.Print("Nama obat yang akan dihapus: ")
+	fmt.Scan(&nama)
+
+	for i = 0; i < *n; i++ {
+		if (*A)[i].nama == nama {
+
+			for j := i; j < *n-1; j++ {
+				(*A)[j] = (*A)[j+1]
+			}
+
+			(*n)--
+			fmt.Println("Data berhasil dihapus.")
+			return
+		}
+	}
+
+	fmt.Println("Obat tidak ditemukan.")
+}
+
+func sequentialGejala(A arrObat, n int) {
+	var i int
+	var gejala string
+	var found bool
+
+	found = false
+
+	fmt.Print("Gejala penyakit: ")
+	fmt.Scan(&gejala)
+
+	for i = 0; i < n; i++ {
+		if A[i].gejala == gejala {
+			fmt.Println(A[i])
+			found = true
+		}
+	}
+
+	if !found {
+		fmt.Println("Data tidak ditemukan")
+	}
+}
 
 func selectionSortExpired(A *arrObat, n int) {
 	var i, j, min int
