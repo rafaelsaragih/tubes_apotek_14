@@ -16,11 +16,10 @@ func main() {
 
 	for {
 
-		fmt.Println("===== APOTEK SMART =====")
 		fmt.Println("1. Tambah Obat")
 		fmt.Println("2. Ubah Obat")
 		fmt.Println("3. Hapus Obat")
-		fmt.Println("4. Sequential Search Nama")
+		fmt.Println("4. Tampilkan Data")
 		fmt.Println("5. Sequential Search Gejala")
 		fmt.Println("6. Binary Search Nama")
 		fmt.Println("7. Selection Sort Expired")
@@ -33,27 +32,24 @@ func main() {
 
 		if pilih == 1 {
 		tambahObat(&data, &n)
-
 		} else if pilih == 2 {
 			ubahObat(&data, &n)
-
 		} else if pilih == 3 {
 			hapusObat(&data, &n)
-
 		} else if pilih == 4 {
+			tampilData(data, n)
+		} else if pilih == 5 {
 			sequentialGejala(data, n)
-
 		} else if pilih == 6 {
+			binarySearchNama(data, n)
+		} else if pilih == 7 {
 			selectionSortExpired(&data, n)
 			fmt.Println("Data berhasil diurutkan")
-
-		} else if pilih == 7 {
+		} else if pilih == 8 {
 			insertionSortExpired(&data, n)
 			fmt.Println("Data berhasil diurutkan")
-
-		} else if pilih == 8 {
+		} else if pilih == 9 {
 			statistik(&data, n)
-
 		} else if pilih == 0 {
 			return
 		}
@@ -136,6 +132,23 @@ func hapusObat(A *arrObat, n *int) {
 	fmt.Println("Obat tidak ditemukan.")
 }
 
+func tampilData(A arrObat, n int) {
+	var i int
+
+	if n == 0 {
+		fmt.Println("Data kosong")
+		return
+	}
+
+	for i = 0; i < n; i++ {
+		fmt.Println("========================")
+		fmt.Println("Nama       :", A[i].nama)
+		fmt.Println("Gejala     :", A[i].gejala)
+		fmt.Println("Stok       :", A[i].stok)
+		fmt.Println("Kadaluarsa :", A[i].kadaluarsa)
+	}
+}
+
 func sequentialGejala(A arrObat, n int) {
 	var i int
 	var gejala string
@@ -156,6 +169,10 @@ func sequentialGejala(A arrObat, n int) {
 	if !found {
 		fmt.Println("Data tidak ditemukan")
 	}
+}
+
+func binarySearchNama(A arrObat, n int) {
+	
 }
 
 func selectionSortExpired(A *arrObat, n int) {
