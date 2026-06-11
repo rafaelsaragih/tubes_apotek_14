@@ -171,6 +171,10 @@ func sequentialGejala(A arrObat, n int) {
 	}
 }
 
+func selectionBinary (A *arrObat, n *int) {
+	
+}
+
 func binarySearchNama(A arrObat, n int) {
 	
 }
