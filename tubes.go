@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type obat struct {
-	stok                     int
+	stok  int
 	nama, gejala, kadaluarsa string
 }
 
@@ -20,24 +20,42 @@ func main() {
 		fmt.Println("1. Tambah Obat")
 		fmt.Println("2. Ubah Obat")
 		fmt.Println("3. Hapus Obat")
-		fmt.Println("4. Tampilkan Data")
-		fmt.Println("5. Sequential Search Nama")
-		fmt.Println("6. Sequential Search Gejala")
-		fmt.Println("7. Binary Search Nama")
-		fmt.Println("8. Selection Sort Expired")
-		fmt.Println("9. Insertion Sort Expired")
-		fmt.Println("10. Statistik")
+		fmt.Println("4. Sequential Search Nama")
+		fmt.Println("5. Sequential Search Gejala")
+		fmt.Println("6. Binary Search Nama")
+		fmt.Println("7. Selection Sort Expired")
+		fmt.Println("8. Insertion Sort Expired")
+		fmt.Println("9. Statistik")
 		fmt.Println("0. Keluar")
 		fmt.Print("Pilih: ")
 
 		fmt.Scan(&pilih)
 
 		if pilih == 1 {
-			tambahObat(&data, &n)
+		tambahObat(&data, &n)
+
 		} else if pilih == 2 {
 			ubahObat(&data, &n)
+
 		} else if pilih == 3 {
 			hapusObat(&data, &n)
+
+		} else if pilih == 4 {
+			sequentialGejala(data, n)
+
+		} else if pilih == 6 {
+			selectionSortExpired(&data, n)
+			fmt.Println("Data berhasil diurutkan")
+
+		} else if pilih == 7 {
+			insertionSortExpired(&data, n)
+			fmt.Println("Data berhasil diurutkan")
+
+		} else if pilih == 8 {
+			statistik(&data, n)
+
+		} else if pilih == 0 {
+			return
 		}
 	}
 }
@@ -70,6 +88,8 @@ func ubahObat(A *arrObat, n *int) {
 	for i = 0; i < *n; i++ {
 		if (*A)[i].nama == ubah {
 
+
+
 			fmt.Println("Data ditemukan!")
 			fmt.Println("Masukkan data baru")
 
@@ -95,7 +115,7 @@ func ubahObat(A *arrObat, n *int) {
 
 func hapusObat(A *arrObat, n *int) {
 	var nama string
-	var i int
+	var i,j int
 
 	fmt.Print("Nama obat yang akan dihapus: ")
 	fmt.Scan(&nama)
@@ -103,7 +123,7 @@ func hapusObat(A *arrObat, n *int) {
 	for i = 0; i < *n; i++ {
 		if (*A)[i].nama == nama {
 
-			for j := i; j < *n-1; j++ {
+			for j = i; j < *n-1; j++ {
 				(*A)[j] = (*A)[j+1]
 			}
 
@@ -169,7 +189,7 @@ func insertionSortExpired(A *arrObat, n int) {
 			i--
 		}
 
-		(*A)[i+1] = temp
+		(*A)[i+1] = temp	
 	}
 }
 
